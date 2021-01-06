@@ -1,0 +1,10 @@
+com\project\stm\model\enums\Types.class
+com\project\stm\controller\MainController.class
+com\project\stm\model\enums\Status.class
+com\project\stm\service\UserService.class
+com\project\stm\model\User.class
+com\project\stm\model\Task.class
+com\project\stm\repository\UserRepository.class
+com\project\stm\service\TaskService.class
+com\project\stm\StmApplication.class
+com\project\stm\repository\TaskRepository.class

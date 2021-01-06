@@ -1,5 +1,6 @@
 package com.project.stm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.stm.model.enums.Status;
 import com.project.stm.model.enums.Types;
 import org.hibernate.annotations.Type;
@@ -30,9 +31,10 @@ public class Task {
     private Status status;
 
     @ManyToOne(
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL
+            fetch = FetchType.EAGER
+            //cascade = CascadeType.ALL
     )
+    @JsonIgnoreProperties({"tasks"})
     private User author;
 
     public Task() {
@@ -43,6 +45,14 @@ public class Task {
         this.title = title;
         this.decription = decription;
         this.dateAdded = dateAdded;
+        this.types = types;
+        this.status = status;
+        this.author = author;
+    }
+
+    public Task(String title, String decription, Types types, Status status, User author) {
+        this.title = title;
+        this.decription = decription;
         this.types = types;
         this.status = status;
         this.author = author;

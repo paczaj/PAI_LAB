@@ -1,5 +1,7 @@
 package com.project.stm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,8 +31,11 @@ public class User {
     private LocalDateTime registrationDateTime = LocalDateTime.now();
 
     @OneToMany(
-            mappedBy = "author"
+            mappedBy = "author",
+            // ONLY ON THE PARENT SIDE
+            cascade = CascadeType.ALL
     )
+    @JsonIgnoreProperties({"author"})
     private List<Task> tasks = new ArrayList<>();
 
     public User(int userId, String name, String lastName, String email, String password, LocalDateTime registrationDateTime) {
@@ -40,6 +45,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.registrationDateTime = registrationDateTime;
+    }
+
+    public User(String name, String lastName, String email, String password, boolean status) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.status = status;
     }
 
     public User() {
