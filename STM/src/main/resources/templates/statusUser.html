@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zmień status użytkownikowi</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+    <h1>Zmień status użytkownikowi</h1>
+        <form th:action="@{/statusUser}" th:method="get">
+            ID Użytkownika<br>
+            <input th:type="text" th:name="userId" th:placeholder="'Wpisz ID'" ><br>
+            <input th:type="submit" th:value="'Zmień status'">
+        </form>
+</body>
+</html>

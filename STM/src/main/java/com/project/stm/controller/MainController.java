@@ -4,15 +4,12 @@ import com.project.stm.model.Task;
 import com.project.stm.model.User;
 import com.project.stm.model.enums.Status;
 import com.project.stm.model.enums.Types;
-import com.project.stm.repository.TaskRepository;
-import com.project.stm.repository.UserRepository;
 import com.project.stm.service.TaskService;
 import com.project.stm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 @RestController

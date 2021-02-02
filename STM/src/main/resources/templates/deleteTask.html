@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuń zadanie</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+    <h1>Usuń zadanie</h1>
+        <form th:action="@{/deleteTask}" th:method="get">
+            ID Zadania<br>
+            <input th:type="text" th:name="taskId" th:placeholder="'Wpisz ID'" ><br>
+            <input th:type="submit" th:value="Usuń">
+        </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyszukaj zadanie</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+    <h1>Wyszukaj zadanie</h1>
+    <form th:action="@{/searchTask}" th:method="get">
+        Tytuł lub Status lub Typ<br>
+        <input th:type="text" th:name="TitleStatusOrTypes" th:placeholder="'Wpisz Tytuł lub Status lub Typ'" ><br>
+        <input th:type="submit" th:value="Wyszukaj">
+    </form><br>
+    <table id="tableStyle" th:if="${task != null}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tytuł</th>
+            <th>Opis</th>
+            <th>Status</th>
+            <th>Typ</th>
+            <th>Data i czas dodania</th>
+            <th>Użytkownik</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${not #lists.isEmpty(task)}" th:each="task : ${task}">
+                <td th:text="${task.getTaskId()}">ID</td>
+                <td th:text="${task.getTitle()}">Tytuł</td>
+                <td th:text="${task.getDecription()}">Opis</td>
+                <td th:text="${task.getStatus()}">Status</td>
+                <td th:text="${task.getTypes()}">Typ</td>
+                <td th:text="${task.getDateAdded()}">Data i czas</td>
+                <td><a th:if="${task.author != null}" th:text="${task.author.getLastName()} + ' ' + ${task.author.getName()}"></a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

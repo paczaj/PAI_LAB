@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie zadania</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+    <h1>Dodaj zadanie</h1>
+    <form th:action="@{/addTask}" th:method="post" th:object="${addTask}">
+        Tytuł<br>
+        <input th:type="text" th:field="*{title}" th:placeholder="'Wpisz Tytuł'" ><br>
+        Opis<br>
+        <input th:type="text" th:field="*{decription}" th:placeholder="'Wpisz opis'" ><br>
+        Typ<br>
+        <select name="types">
+            <option th:each="typesOption : ${T(com.project.stm.model.enums.Types).values()}"
+                th:value="${typesOption}" th:text="${typesOption.typesName}"></option>
+        </select><br>
+        Status<br>
+        <select name="status">
+            <option th:each="statusOption : ${T(com.project.stm.model.enums.Status).values()}"
+                    th:value="${statusOption}" th:text="${statusOption.name()}"></option>
+        </select><br>
+        Użytkownik<br>
+        <input th:type="text" th:field="*{author.userId}" th:placeholder="'Wpisz ID użytkownika'"><br>
+        <input th:type="submit" th:value="'Dodaj zadanie'">
+    </form>
+</body>
+</html>

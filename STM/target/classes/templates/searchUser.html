@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyszukaj użytkownika</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+</head>
+<body>
+    <h1>Wyszukaj użytkownika</h1>
+    <form th:action="@{/searchUser}" th:method="get">
+        ID użytkownika lub Email<br>
+        <input th:type="text" th:name="userIdOrEmail" th:placeholder="'Wpisz ID lub Email'" ><br>
+        <input th:type="submit" th:value="Wyszukaj">
+    </form><br>
+    <table id="tableStyle" th:if="${user != null}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Data i czas rejestracji</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${user.isPresent()}">
+                <td th:text="${user.get().getUserId()}">ID</td>
+                <td th:text="${user.get().getName()}">Imię</td>
+                <td th:text="${user.get().getLastName()}">Nazwisko</td>
+                <td th:text="${user.get().getEmail()}">Email</td>
+                <td th:text="${user.get().isStatus()}">Status</td>
+                <td th:text="${user.get().getRegistrationDateTime()}">Data i czas</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
